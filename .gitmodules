@@ -1,3 +1,9 @@
 [submodule "socket.io-client-cpp"]
 	path = socket.io-client-cpp
 	url = https://github.com/socketio/socket.io-client-cpp.git
+[submodule "websocketpp"]
+	path = websocketpp
+	url = https://github.com/zaphoyd/websocketpp.git
+[submodule "rapidjson"]
+	path = rapidjson
+	url = https://github.com/Tencent/rapidjson.git

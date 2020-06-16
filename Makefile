@@ -6,7 +6,6 @@ WS_FLAGS=-I$(WEBSOCKET_PATH) -lboost_system -lpthread
 CLIENT_FLAGS=-I$(SOCKETIO_PATH)/src -I$(SOCKETIO_PATH)/lib/rapidjson/include
 
 Client: main.cpp
-	echo $(WEBSOCKET_PATH)
 	g++ $(COMMON_FLAGS) $(WS_FLAGS) $(CLIENT_FLAGS) -o client main.cpp
 
 TestWS: test.cpp
