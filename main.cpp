@@ -1,26 +1,28 @@
-#include "socket.io-client-cpp/src/sio_client.h"
+#include <sio_client.cpp>
 
 #include <iostream>
 
 #define DEBUG
 
 #ifdef DEBUG
-bool __log = true;
+bool _log = true;
 #else
-bool __log = false;
+bool _log = false;
 #endif
 
 int plaeyrsCount = 0;
 
 void ONsFailure(sio::event &ev) {
-    if (__log) {
-        std::cerr << ev->getMap()["msg"]->getString() << '\n';
+    sio::message::ptr data = ev.get_message();
+    if (_log) {
+        std::cerr << data->get_map()["msg"]->get_string() << '\n';
     }
 }
 
 void ONsYouJoined(sio::event &ev) {
-    if (__log) {
-        std::cerr << ev->getMap()["msg"]->getString()
+    sio::message::ptr data = ev.get_message();
+    if (_log) {
+        std::cerr << data->get_map()["key"]->get_string() << '\n';
     }
 }
 
@@ -40,7 +42,10 @@ int main(int argc, char** argv) {
     sio::client h;
     h.connect("https://m20-sch57.site:3005");
 
-    //
+    h.socket()->on("sFailure", &ONsFailure);
+    h.socket()->on("sYouJoined", &ONsYouJoined);
+
+    h.socket()->emit("cJoinRoom", "{\"key\": \"" + key + "\", \"username\": \"" + name + "\", \"time_zone_offset\": 0}");
 
     return 0;
 }
