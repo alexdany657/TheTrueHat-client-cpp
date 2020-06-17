@@ -6,11 +6,14 @@ COMMON_FLAGS=-std=c++17 -Wall -Llib -lsio_client -lpthread
 WS_FLAGS=-I$(WEBSOCKET_PATH) -lboost_system
 CLIENT_FLAGS=-I$(SOCKETIO_PATH)
 
-Client: main.cpp
+Client: main.cpp, build
 	g++ $(COMMON_FLAGS) $(CLIENT_FLAGS) -o client main.cpp
 
 TestWS: test.cpp
 	g++ $(COMMON_FLAGS) $(WS_FLAGS) -o test_ws test.cpp
+
+build:
+	g++ -std=c++17 -c -shared -fpic -fPIC -o lib/sio_packet.o -Iwebsocketpp
 
 .PHONY: clean, cleanWS
 
