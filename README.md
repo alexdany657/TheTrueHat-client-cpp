@@ -10,5 +10,6 @@ Run `make client`.
 ## Run
 Adjust `config.sh` to your needs.
 Adjust config constants in `main.cpp` to your needs.
+Find and set up proper url in `main.cpp`.
 Run `make client` to compile with updated constants.
 Run `./runAll.sh` and have fun.
