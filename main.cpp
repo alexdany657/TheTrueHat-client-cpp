@@ -15,11 +15,11 @@ bool _log = false;
 #endif
 
 const time_t delay = 1;
-const time_t minExplTime = 10;
-const time_t maxExplTime = 30;
+const time_t minExplTime = 100;
+const time_t maxExplTime = 300;
 
 const int64_t delayTime = 0;
-const int64_t explanationTime = 100;
+const int64_t explanationTime = 1000;
 const int64_t aftermathTime = 0;
 const int64_t wordNumber = 100;
 
@@ -179,7 +179,7 @@ int main(int argc, char** argv) {
 
     h.set_open_listener(&on_connected);
 
-    h.connect("wss://m20-sch57.site:3005");
+    h.connect("wss://m20-sch57.site/thetruehat/socket.io/");
 
     _lock.lock();
     if (!connect_finish) {
