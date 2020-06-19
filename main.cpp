@@ -14,14 +14,20 @@ bool _log = true;
 bool _log = false;
 #endif
 
+// start of config constants
+
+// client config
 const time_t delay = 1;
 const time_t minExplTime = 100;
 const time_t maxExplTime = 300;
 
+// room config
 const int64_t delayTime = 0;
 const int64_t explanationTime = 1000;
 const int64_t aftermathTime = 0;
 const int64_t wordNumber = 100;
+
+// end of config constants
 
 size_t playersCount = 0;
 std::mutex _lock;
