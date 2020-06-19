@@ -178,6 +178,7 @@ int main(int argc, char** argv) {
     playersCount = atoi(argv[2]);
 
     h.set_open_listener(&on_connected);
+    h.set_logs_quiet();
 
     h.connect("wss://m20-sch57.site/thetruehat/socket.io/");
 
