@@ -17,14 +17,14 @@ bool _log = false;
 // start of config constants
 
 // client config
-const time_t delay = 1;
+const time_t delay = 150;
 const time_t minExplTime = 100;
-const time_t maxExplTime = 300;
+const time_t maxExplTime = 100;
 
 // room config
 const int64_t delayTime = 0;
-const int64_t explanationTime = 1000;
-const int64_t aftermathTime = 0;
+const int64_t explanationTime = 5000;
+const int64_t aftermathTime = 100;
 const int64_t wordNumber = 100;
 
 // end of config constants
@@ -173,7 +173,8 @@ void on_connected() {
 
 int main(int argc, char** argv) {
     if (argc != 4) {
-        std::cout << "Wrong number of argument: expected 3, got " << argc << ".\n";
+        std::cout << "Wrong number of argument: expected 3, got " << argc - 1 << ".\n";
+        std::cerr << argv[0] << ' ' << argv[1] << ' ' << argv[2] << ' ' << argv[3] << '\n';
         return 1;
     }
 
@@ -186,7 +187,7 @@ int main(int argc, char** argv) {
     h.set_open_listener(&on_connected);
     h.set_logs_quiet();
 
-    h.connect("wss://m20-sch57.site/thetruehat/socket.io/");
+    h.connect("wss://m20-sch57.site:3005");
 
     _lock.lock();
     if (!connect_finish) {
